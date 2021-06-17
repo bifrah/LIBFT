@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:25:56 by bifrah            #+#    #+#             */
-/*   Updated: 2021/06/17 17:26:04 by bifrah           ###   ########.fr       */
+/*   Updated: 2021/06/17 18:08:16 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		return (NULL);
 	}
 	if (lst)
-	{
-		newlst->content = f(lst->content);
 		newlst->next = ft_lstmap(lst->next, f, del);
-	}
+	newlst->content = f(lst->content);
 	return (newlst);
 }
