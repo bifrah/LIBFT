@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:26:25 by bifrah            #+#    #+#             */
-/*   Updated: 2021/06/17 17:26:36 by bifrah           ###   ########.fr       */
+/*   Updated: 2021/06/30 01:28:11 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,7 @@ char	*ft_substr(char const *s, unsigned int start, unsigned int len)
 	if (!dest)
 		return (0);
 	while (i < len && start < ft_strlen(s))
-	{
-		dest[i] = s[start];
-		i++;
-		start++;
-	}
+		dest[i++] = s[start++];
 	dest[i] = '\0';
 	return (dest);
 }

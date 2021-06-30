@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:28:04 by bifrah            #+#    #+#             */
-/*   Updated: 2021/06/17 17:28:10 by bifrah           ###   ########.fr       */
+/*   Updated: 2021/06/30 00:07:35 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,6 @@ static int	ft_malloc_k(char const *s, char c, int i)
 	return (count);
 }
 
-/*static void		*ft_free()
-{
-	
-}*/
-
 static char	**winline(char const *s, char c, char **dest, int k)
 {
 	int	i;
@@ -61,12 +56,18 @@ static char	**winline(char const *s, char c, char **dest, int k)
 	while (j < ft_malloc_j(s, c) && s[i])
 	{
 		dest[j] = (char *)malloc(sizeof(char) * (ft_malloc_k(s, c, i) + 1));
+		if (!dest[j])
+		{
+			while (k < j)
+				free (dest[k++]);
+			free (dest);
+			return (NULL);
+		}
 		while (s[i] == c && s[i])
 			i++;
 		while (s[i] != c && s[i])
 			dest[j][k++] = s[i++];
-		dest[j][k] = '\0';
-		j++;
+		dest[j++][k] = '\0';
 		k = 0;
 	}
 	dest[j] = NULL;

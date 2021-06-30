@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:29:43 by bifrah            #+#    #+#             */
-/*   Updated: 2021/06/17 17:29:44 by bifrah           ###   ########.fr       */
+/*   Updated: 2021/06/30 01:27:02 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,15 @@
 
 void	ft_lstadd_back(t_list **alst, t_list *new)
 {
+	t_list	*last;
+
 	if (!new)
 		return ;
 	if (!*alst)
 		*alst = new;
-	(ft_lstlast(*alst))->next = new;
-	new->next = NULL;
+	else
+	{
+		last = ft_lstlast(*alst);
+		last->next = new;
+	}
 }

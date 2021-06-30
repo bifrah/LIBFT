@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:29:36 by bifrah            #+#    #+#             */
-/*   Updated: 2021/06/17 18:20:01 by bifrah           ###   ########.fr       */
+/*   Updated: 2021/06/30 00:53:52 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 
 	if (!lst || !del)
 		return ;
-	while (*lst)
+	if (lst)
 	{
-		tmp = (*lst)->next;
-		del(*lst);
-		*lst = tmp;
+		while (*lst)
+		{
+			tmp = (*lst)->next;
+			ft_lstdelone(*lst, del);
+			*lst = tmp;
+		}
 	}
-	*lst = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:29:48 by bifrah            #+#    #+#             */
-/*   Updated: 2021/06/17 17:29:49 by bifrah           ###   ########.fr       */
+/*   Updated: 2021/06/30 01:40:53 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,8 @@ static int	g_malloc(int n)
 	return (len);
 }
 
-static char	*special(int n)
+static char	*special(int n, char *dest)
 {
-	char	*dest;
-
-	dest = (char *)malloc(sizeof(char) * (g_malloc(n) + 1));
 	if (n == -0 || n == 0)
 	{
 		dest[0] = '0';
@@ -76,7 +73,7 @@ char	*ft_itoa(int n)
 	if (!dest)
 		return (NULL);
 	if (n == -2147483648 || n == 0 || n == -0)
-		return (special(n));
+		return (special(n, dest));
 	if (n < 0)
 	{
 		n *= -1;
